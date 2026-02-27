@@ -1,0 +1,21 @@
+---
+interface Props {
+  category?: string;
+  title?: string;
+  body?: string;
+}
+const {
+  category = "technology",
+  title = "Lorem ipsum massa neque vitae lacus",
+  body = "Lorem ipsum dolor sit amet consectetur. Adipiscing turpis quis mi vitae massa justo platea."
+} = Astro.props;
+---
+<div class="flex flex-col w-[395px] shrink-0">
+  <div class="img-placeholder w-full h-[231px]"></div>
+  <div class="flex flex-col gap-3 py-6">
+    <span class="text-base font-extrabold uppercase">{category}</span>
+    <h3 class="font-serif text-4xl leading-snug font-normal">{title}</h3>
+    <p class="text-base leading-relaxed">{body}</p>
+    <a href="#" class="text-base font-extrabold uppercase">LEARN MORE →</a>
+  </div>
+</div>

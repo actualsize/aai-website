@@ -1,0 +1,25 @@
+---
+interface Props {
+  active?: string;
+  tags?: string[];
+}
+const {
+  active = "All",
+  tags = ["Energy & Environment", "Technology", "Safety", "View all"]
+} = Astro.props;
+---
+<div class="page-frame px-page-margin">
+  <div class="flex items-center gap-4 bg-aai-filter-bg rounded px-2.5 py-2 max-w-[762px]">
+    <!-- Active pill -->
+    <span class="bg-aai-filter-pill px-4 py-3 text-sm font-extrabold shrink-0">
+      {active}
+    </span>
+
+    <!-- Tag labels -->
+    {tags.map((tag) => (
+      <button class="text-sm font-extrabold hover:underline whitespace-nowrap cursor-pointer">
+        {tag}
+      </button>
+    ))}
+  </div>
+</div>

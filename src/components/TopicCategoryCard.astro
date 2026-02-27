@@ -1,0 +1,13 @@
+---
+interface Props {
+  title?: string;
+}
+const { title = "Government Affairs" } = Astro.props;
+---
+<div class="flex flex-col w-[204px] shrink-0">
+  <div class="img-placeholder w-full h-[157px]"></div>
+  <div class="flex flex-col gap-2 py-4">
+    <h4 class="text-2xl font-bold leading-snug">{title}</h4>
+    <a href="#" class="text-sm font-extrabold uppercase">EXPLORE →</a>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+import HeaderNav from "../components/HeaderNav.astro";
+import SectionHero from "../components/SectionHero.astro";
+import FilterBar from "../components/FilterBar.astro";
+import SpotlightBlock from "../components/SpotlightBlock.astro";
+import StatBlock from "../components/StatBlock.astro";
+import SectionGrid from "../components/SectionGrid.astro";
+import TopicCategoryCard from "../components/TopicCategoryCard.astro";
+import ContentCard from "../components/ContentCard.astro";
+import MembersCarousel from "../components/MembersCarousel.astro";
+import Footer from "../components/Footer.astro";
+
+const topicCategories = [
+  "Government Affairs",
+  "Technology",
+  "Safety",
+  "Energy & Environment",
+  "Innovation",
+  "Trade & Competitiveness",
+];
+---
+<BaseLayout title="Advocacy — AAI">
+  <HeaderNav />
+  <SectionHero />
+  <FilterBar />
+
+  <div class="h-12"></div>
+
+  <SpotlightBlock />
+
+  <!-- Feature article row -->
+  <section class="page-frame bg-aai-white">
+    <div class="px-page-margin pt-4">
+      <div class="img-placeholder w-full h-[315px]"></div>
+    </div>
+    <div class="flex gap-24 px-page-margin py-12">
+      <div class="flex flex-col gap-4 flex-1">
+        <span class="text-base font-extrabold uppercase">technology</span>
+        <h3 class="font-serif text-5xl leading-tight font-normal">Emissions and Fuel Economy</h3>
+        <p class="text-base leading-relaxed">
+          Lorem ipsum dolor sit amet consectetur. Mattis faucibus dignissim.
+        </p>
+        <a href="#" class="text-base font-extrabold uppercase">LEARN MORE →</a>
+      </div>
+      <div class="flex items-start justify-end flex-1">
+        <StatBlock />
+      </div>
+    </div>
+  </section>
+
+  <SectionGrid />
+
+  <!-- Explore Advocacy topics -->
+  <section class="page-frame bg-aai-section-bg">
+    <div class="px-page-margin py-12">
+      <h2 class="font-serif text-4xl font-normal mb-8">Explore Advocacy</h2>
+      <div class="flex justify-between">
+        {topicCategories.map((topic) => (
+          <TopicCategoryCard title={topic} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related materials -->
+  <section class="page-frame">
+    <div class="px-page-margin py-12">
+      <h3 class="text-base font-extrabold uppercase mb-6">Related materials</h3>
+      <div class="flex gap-6">
+        <ContentCard />
+        <ContentCard category="safety" title="Recall best practices for the modern era" />
+        <ContentCard category="energy" title="EV infrastructure report and analysis" />
+      </div>
+    </div>
+  </section>
+
+  <MembersCarousel />
+  <Footer />
+</BaseLayout>

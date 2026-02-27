@@ -1,0 +1,19 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+}
+const {
+  title = "Advocacy",
+  subtitle = "Lorem ipsum nisi",
+  description = "Lorem ipsum dolor sit amet consectetur. Elementum ut tellus facilisis feugiat quam faucibus lectus senectus aliquam. In tellus elit senectus."
+} = Astro.props;
+---
+<section class="page-frame">
+  <div class="flex flex-col gap-8 py-24 px-page-margin">
+    <h1 class="font-serif text-[64px] leading-tight font-normal">{title}</h1>
+    <p class="text-base font-extrabold uppercase">{subtitle}</p>
+    <p class="font-serif text-[42px] leading-snug font-normal max-w-5xl">{description}</p>
+  </div>
+</section>

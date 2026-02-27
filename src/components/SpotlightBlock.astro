@@ -1,0 +1,45 @@
+---
+interface Props {
+  heading?: string;
+  leftCategory?: string;
+  leftTitle?: string;
+  leftBody?: string;
+  rightBody?: string;
+}
+const {
+  heading = "Advocacy Insights",
+  leftCategory = "technology",
+  leftTitle = "Artificial Intelligence",
+  leftBody = "Lorem ipsum dolor sit amet consectetur. Mattis faucibus dignissim malesuada lectus in est interdum. Lobortis purus vitae urna dignissim donec diam.",
+  rightBody = "Lorem ipsum dolor sit amet consectetur. Mattis faucibus dignissim malesuada lectus in est interdum. Lobortis purus vitae urna dignissim donec diam. Eu ullamcorper vehicula leo a."
+} = Astro.props;
+---
+<section class="page-frame">
+  <!-- Section heading -->
+  <div class="px-page-margin pb-12">
+    <h2 class="font-serif text-[56px] leading-tight font-normal">{heading}</h2>
+  </div>
+
+  <!-- Side-by-side images -->
+  <div class="flex px-page-margin">
+    <div class="img-placeholder w-[684px] h-[660px]"></div>
+    <div class="img-placeholder-dk flex-1 h-[660px]"></div>
+  </div>
+
+  <!-- Two-column article -->
+  <div class="flex gap-24 px-page-margin py-12">
+    <!-- Left column -->
+    <div class="flex flex-col gap-4 w-[447px] shrink-0">
+      <span class="text-base font-extrabold uppercase">{leftCategory}</span>
+      <h3 class="font-serif text-5xl leading-tight font-normal">{leftTitle}</h3>
+      <p class="text-base leading-relaxed">{leftBody}</p>
+      <a href="#" class="text-base font-extrabold uppercase">LEARN MORE →</a>
+    </div>
+
+    <!-- Right column -->
+    <div class="flex flex-col gap-4 flex-1">
+      <p class="text-base leading-relaxed">{rightBody}</p>
+      <a href="#" class="text-base font-extrabold uppercase">DOWNLOAD →</a>
+    </div>
+  </div>
+</section>

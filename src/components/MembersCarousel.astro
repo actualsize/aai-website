@@ -1,0 +1,22 @@
+---
+interface Props {
+  logoCount?: number;
+}
+const { logoCount = 5 } = Astro.props;
+---
+<section class="page-frame bg-aai-section-bg">
+  <div class="flex flex-col gap-6 py-12">
+    <!-- Heading row -->
+    <div class="flex items-center justify-between px-page-margin">
+      <span class="text-sm font-extrabold uppercase">OUR MEMBERS</span>
+      <a href="#" class="text-sm font-extrabold uppercase">VIEW ALL MEMBERS →</a>
+    </div>
+
+    <!-- Logo strip — evenly spaced -->
+    <div class="flex justify-between items-center px-page-margin">
+      {Array.from({ length: logoCount }).map(() => (
+        <div class="bg-aai-member-logo w-[188px] h-[66px] shrink-0"></div>
+      ))}
+    </div>
+  </div>
+</section>

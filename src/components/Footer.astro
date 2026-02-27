@@ -1,0 +1,50 @@
+---
+const navCols = [
+  { label: "ABOUT",     links: ["About AAI", "Leadership", "Members", "Careers"] },
+  { label: "ADVOCACY",  links: ["Technology", "Safety", "Energy", "Innovation"] },
+  { label: "RESOURCES", links: ["Reports", "Policy Briefs", "Data", "Archives"] },
+  { label: "NEWS",      links: ["Press Releases", "Events", "Media Kit", "Contact"] },
+];
+const socialIcons = ["f", "tw", "in", "yt"];
+const legalLinks = ["Privacy Policy", "Terms of Use", "Accessibility"];
+---
+<footer class="page-frame bg-aai-footer-bg">
+  <!-- Main content -->
+  <div class="flex justify-between px-page-margin py-14">
+    <!-- Logo column -->
+    <div class="flex flex-col gap-4">
+      <div class="img-placeholder w-[208px] h-[47px]"></div>
+      <p class="text-[13px]">Alliance for Automotive Innovation</p>
+      <!-- Social icons -->
+      <div class="flex gap-3">
+        {socialIcons.map((icon) => (
+          <div class="w-8 h-8 bg-aai-link-rect flex items-center justify-center">
+            <span class="text-[11px]">{icon}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Nav columns -->
+    <div class="flex gap-16">
+      {navCols.map((col) => (
+        <div class="flex flex-col gap-3">
+          <span class="text-xs font-extrabold uppercase">{col.label}</span>
+          {col.links.map((link) => (
+            <a href="#" class="text-sm hover:underline">{link}</a>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="flex justify-between items-center px-page-margin py-5 border-t border-aai-nav-bar">
+    <span class="text-xs">&copy; 2026 Alliance for Automotive Innovation. All rights reserved.</span>
+    <div class="flex gap-6 items-center">
+      {legalLinks.map((link) => (
+        <a href="#" class="text-xs hover:underline">{link}</a>
+      ))}
+    </div>
+  </div>
+</footer>

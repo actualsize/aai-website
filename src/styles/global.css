@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+/* ─── AAI Design Tokens (synced from Figma) ─────────────────────────────────── */
+@theme {
+  /* Colors */
+  --color-aai-white: #FFFFFF;
+  --color-aai-black: #000000;
+  --color-aai-img-gray: #D9D9D9;
+  --color-aai-img-gray-dk: #BCBCBC;
+  --color-aai-section-bg: #F5F5F5;
+  --color-aai-filter-bg: #EEEEEE;
+  --color-aai-filter-pill: #D9D9D9;
+  --color-aai-member-logo: #E4E4E4;
+  --color-aai-nav-bar: #CACACA;
+  --color-aai-footer-bg: #D9D9D9;
+  --color-aai-link-rect: #F5F5F5;
+
+  /* Spacing */
+  --spacing-page-margin: 96px;
+
+  /* Fonts — swap these for licensed TT Norms / TT Norms Pro Serif when available */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+}
+
+/* ─── Base styles ────────────────────────────────────────────────────────────── */
+html {
+  font-family: var(--font-sans);
+  color: var(--color-aai-black);
+  background: var(--color-aai-white);
+}
+
+/* Page-width container */
+.page-frame {
+  max-width: 1536px;
+  margin-inline: auto;
+  width: 100%;
+}
+
+/* Gray image placeholder — reusable utility */
+.img-placeholder {
+  background-color: var(--color-aai-img-gray);
+  flex-shrink: 0;
+}
+
+.img-placeholder-dk {
+  background-color: var(--color-aai-img-gray-dk);
+  flex-shrink: 0;
+}
