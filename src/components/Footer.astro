@@ -18,7 +18,7 @@ const legalLinks = ["Privacy Policy", "Terms of Use", "Accessibility"];
       <!-- Social icons -->
       <div class="flex gap-3">
         {socialIcons.map((icon) => (
-          <div class="w-8 h-8 bg-aai-link-rect flex items-center justify-center">
+          <div class="w-8 h-8 bg-aai-link-rect flex items-center justify-center cursor-pointer transition-colors duration-150 hover:bg-aai-nav-bar">
             <span class="text-[11px]">{icon}</span>
           </div>
         ))}
@@ -31,7 +31,7 @@ const legalLinks = ["Privacy Policy", "Terms of Use", "Accessibility"];
         <div class="flex flex-col gap-3">
           <span class="text-xs font-extrabold uppercase">{col.label}</span>
           {col.links.map((link) => (
-            <a href="#" class="text-sm hover:underline">{link}</a>
+            <a href="#" class="text-sm hover:underline hover:text-gray-600 transition-colors duration-150">{link}</a>
           ))}
         </div>
       ))}

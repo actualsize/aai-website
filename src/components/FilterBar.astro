@@ -7,19 +7,69 @@ const {
   active = "All",
   tags = ["Energy & Environment", "Technology", "Safety", "View all"]
 } = Astro.props;
+const allTags = [active, ...tags];
 ---
 <div class="page-frame px-page-margin">
-  <div class="flex items-center justify-between bg-aai-filter-bg rounded pl-2.5 pr-[30px] py-2 max-w-[762px]">
-    <!-- Active pill -->
-    <span class="bg-aai-filter-pill px-4 py-3 text-sm font-extrabold shrink-0">
-      {active}
-    </span>
+  <div class="filter-bar relative flex items-center justify-between bg-aai-filter-bg rounded pl-2.5 pr-[30px] py-[9px] max-w-[762px]">
+    <!-- Sliding pill (positioned behind buttons) -->
+    <div
+      class="filter-pill absolute h-[49px] bg-aai-filter-pill rounded-sm transition-all duration-300 ease-out pointer-events-none"
+      aria-hidden="true"
+    ></div>
 
-    <!-- Tag labels -->
-    {tags.map((tag) => (
-      <button class="text-sm font-extrabold hover:underline whitespace-nowrap cursor-pointer">
+    <!-- Filter buttons -->
+    {allTags.map((tag, i) => (
+      <button
+        data-filter={tag}
+        aria-pressed={i === 0 ? "true" : "false"}
+        class:list={[
+          "filter-btn relative z-10 px-4 py-3 text-sm font-extrabold whitespace-nowrap cursor-pointer",
+          "transition-colors duration-150",
+          "hover:text-gray-600",
+        ]}
+      >
         {tag}
       </button>
     ))}
   </div>
 </div>
+
+<script>
+  function initFilterBars() {
+    document.querySelectorAll('.filter-bar').forEach((bar) => {
+      const pill = bar.querySelector('.filter-pill') as HTMLElement;
+      const buttons = bar.querySelectorAll('.filter-btn') as NodeListOf<HTMLButtonElement>;
+      if (!pill || buttons.length === 0) return;
+
+      function movePill(btn: HTMLButtonElement) {
+        const barRect = bar.getBoundingClientRect();
+        const btnRect = btn.getBoundingClientRect();
+        pill.style.left = `${btn.offsetLeft}px`;
+        pill.style.width = `${btnRect.width}px`;
+      }
+
+      // Initialize pill on the first (active) button
+      movePill(buttons[0]);
+
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          // Update aria-pressed
+          buttons.forEach((b) => b.setAttribute('aria-pressed', 'false'));
+          btn.setAttribute('aria-pressed', 'true');
+          // Slide pill
+          movePill(btn);
+        });
+      });
+
+      // Recalculate on resize
+      window.addEventListener('resize', () => {
+        const active = bar.querySelector('[aria-pressed="true"]') as HTMLButtonElement;
+        if (active) movePill(active);
+      });
+    });
+  }
+
+  // Run on initial load and on Astro page transitions
+  initFilterBars();
+  document.addEventListener('astro:page-load', initFilterBars);
+</script>

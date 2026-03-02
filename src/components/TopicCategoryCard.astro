@@ -4,10 +4,10 @@ interface Props {
 }
 const { title = "Government Affairs" } = Astro.props;
 ---
-<div class="flex flex-col w-[204px] shrink-0">
-  <div class="img-placeholder w-full h-[157px]"></div>
+<div class="group flex flex-col w-[204px] shrink-0 cursor-pointer transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
+  <div class="img-placeholder w-full h-[157px] transition-[filter] duration-200 group-hover:brightness-95"></div>
   <div class="flex flex-col gap-2 py-4">
     <h4 class="text-2xl font-bold leading-snug">{title}</h4>
-    <a href="#" class="text-sm font-extrabold uppercase">EXPLORE →</a>
+    <a href="#" class="text-sm font-extrabold uppercase group-hover:underline">EXPLORE →</a>
   </div>
 </div>
