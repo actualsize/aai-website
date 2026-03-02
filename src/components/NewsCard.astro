@@ -1,0 +1,24 @@
+---
+interface Props {
+  date?: string;
+  category?: string;
+  title?: string;
+  excerpt?: string;
+}
+const {
+  date = "Mar 2, 2026",
+  category = "technology",
+  title = "Lorem ipsum headline for this news article",
+  excerpt = "Lorem ipsum dolor sit amet consectetur. Adipiscing turpis quis mi vitae massa justo platea.",
+} = Astro.props;
+---
+<div class="group flex flex-col min-w-0 cursor-pointer transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
+  <div class="img-placeholder w-full h-[200px] transition-[filter] duration-200 group-hover:brightness-95"></div>
+  <div class="flex flex-col gap-2 py-5">
+    <time class="text-sm text-gray-500">{date}</time>
+    <span class="text-sm font-extrabold uppercase">{category}</span>
+    <h3 class="font-serif text-2xl leading-snug font-normal">{title}</h3>
+    <p class="text-base leading-relaxed text-gray-600">{excerpt}</p>
+    <a href="#" class="text-sm font-extrabold uppercase group-hover:underline">READ MORE →</a>
+  </div>
+</div>

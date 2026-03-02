@@ -1,0 +1,29 @@
+---
+interface Props {
+  heading?: string;
+  body?: string;
+}
+const {
+  heading = "Stay Informed",
+  body = "Get the latest policy updates and industry insights delivered to your inbox.",
+} = Astro.props;
+---
+<section class="page-frame bg-aai-section-bg">
+  <div class="flex items-center justify-between gap-16 px-page-margin py-16">
+    <!-- Text -->
+    <div class="flex flex-col gap-3 max-w-[480px]">
+      <h2 class="font-serif text-4xl font-normal">{heading}</h2>
+      <p class="text-base leading-relaxed text-gray-600">{body}</p>
+    </div>
+
+    <!-- Form placeholder -->
+    <div class="flex gap-3 items-center">
+      <div class="w-[320px] h-[48px] bg-white border border-aai-nav-bar flex items-center px-4">
+        <span class="text-sm text-gray-400">Enter your email address</span>
+      </div>
+      <div class="h-[48px] px-6 bg-aai-black text-white flex items-center cursor-pointer hover:bg-gray-800 transition-colors duration-150">
+        <span class="text-sm font-extrabold uppercase">Subscribe</span>
+      </div>
+    </div>
+  </div>
+</section>

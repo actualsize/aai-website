@@ -1,0 +1,37 @@
+---
+import NewsCard from "./NewsCard.astro";
+
+interface CardData {
+  date: string;
+  category: string;
+  title: string;
+  excerpt: string;
+}
+interface Props {
+  heading?: string;
+  cards?: CardData[];
+}
+const {
+  heading = "Related Articles",
+  cards = [
+    { date: "Feb 28, 2026", category: "safety", title: "New crash test protocols improve occupant protection", excerpt: "Lorem ipsum dolor sit amet consectetur adipiscing elit." },
+    { date: "Feb 25, 2026", category: "technology", title: "Connected vehicle infrastructure reaches milestone", excerpt: "Lorem ipsum dolor sit amet consectetur adipiscing elit." },
+    { date: "Feb 20, 2026", category: "energy", title: "EV battery recycling standards take shape", excerpt: "Lorem ipsum dolor sit amet consectetur adipiscing elit." },
+  ],
+} = Astro.props;
+---
+<section class="page-frame">
+  <div class="px-page-margin py-12 border-t border-aai-nav-bar">
+    <h3 class="text-base font-extrabold uppercase mb-8">{heading}</h3>
+    <div class="flex gap-6">
+      {cards.map((card) => (
+        <NewsCard
+          date={card.date}
+          category={card.category}
+          title={card.title}
+          excerpt={card.excerpt}
+        />
+      ))}
+    </div>
+  </div>
+</section>

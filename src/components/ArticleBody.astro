@@ -1,0 +1,96 @@
+---
+import Pullquote from "./Pullquote.astro";
+import ImageCaption from "./ImageCaption.astro";
+import VideoEmbed from "./VideoEmbed.astro";
+
+interface Props {
+  topics?: string[];
+}
+const {
+  topics = ["Autonomous Vehicles", "Safety Standards", "Technology Policy", "Federal Regulation", "Innovation"],
+} = Astro.props;
+---
+<section class="page-frame">
+  <div class="flex gap-16 px-page-margin pb-16">
+    <!-- Main content column -->
+    <article class="flex-1 max-w-[720px]">
+      <div class="font-serif text-lg leading-relaxed space-y-6">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+
+        <h2 class="font-serif text-3xl font-normal !mt-12 !mb-4">The Current Landscape</h2>
+
+        <p>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+
+        <p>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+        </p>
+
+        <Pullquote />
+
+        <p>
+          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+        </p>
+
+        <ImageCaption />
+
+        <h2 class="font-serif text-3xl font-normal !mt-12 !mb-4">Looking Ahead</h2>
+
+        <p>
+          At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.
+        </p>
+
+        <p>
+          Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+        </p>
+
+        <VideoEmbed />
+
+        <p>
+          Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
+        </p>
+      </div>
+    </article>
+
+    <!-- Sidebar -->
+    <aside class="w-[280px] shrink-0">
+      <div class="sticky top-8 flex flex-col gap-8">
+        <!-- Related Topics -->
+        <div class="flex flex-col gap-3">
+          <h4 class="text-sm font-extrabold uppercase">Related Topics</h4>
+          <div class="flex flex-wrap gap-2">
+            {topics.map((topic) => (
+              <a href="#" class="px-3 py-1.5 bg-aai-section-bg text-sm hover:bg-aai-filter-bg transition-colors duration-150">
+                {topic}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Share -->
+        <div class="flex flex-col gap-3">
+          <h4 class="text-sm font-extrabold uppercase">Share</h4>
+          <div class="flex gap-2">
+            {["f", "tw", "in", "✉"].map((icon) => (
+              <div class="w-8 h-8 bg-aai-section-bg flex items-center justify-center cursor-pointer hover:bg-aai-filter-bg transition-colors duration-150">
+                <span class="text-[11px]">{icon}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- In This Article -->
+        <div class="flex flex-col gap-3">
+          <h4 class="text-sm font-extrabold uppercase">In This Article</h4>
+          <nav class="flex flex-col gap-2">
+            <a href="#" class="text-sm text-gray-600 hover:text-aai-black hover:underline transition-colors duration-150">The Current Landscape</a>
+            <a href="#" class="text-sm text-gray-600 hover:text-aai-black hover:underline transition-colors duration-150">Looking Ahead</a>
+          </nav>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>

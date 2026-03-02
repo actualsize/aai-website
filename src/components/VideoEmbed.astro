@@ -1,0 +1,17 @@
+---
+interface Props {
+  caption?: string;
+}
+const {
+  caption = "Watch: Industry leaders discuss the future of vehicle safety standards.",
+} = Astro.props;
+---
+<figure class="my-8">
+  <div class="relative w-full aspect-video bg-aai-img-gray-dk flex items-center justify-center">
+    <!-- Play button -->
+    <div class="w-16 h-16 rounded-full bg-white/80 flex items-center justify-center cursor-pointer hover:bg-white transition-colors duration-200">
+      <div class="w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-l-[18px] border-l-aai-black ml-1"></div>
+    </div>
+  </div>
+  {caption && <figcaption class="mt-2 text-sm text-gray-500 italic">{caption}</figcaption>}
+</figure>

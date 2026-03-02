@@ -1,0 +1,17 @@
+---
+interface Props {
+  caption?: string;
+  credit?: string;
+  height?: string;
+}
+const {
+  caption = "An illustration of the emerging autonomous vehicle testing framework.",
+  credit = "Alliance for Automotive Innovation",
+  height = "h-[360px]",
+} = Astro.props;
+---
+<figure class="my-8">
+  <div class:list={["img-placeholder w-full", height]}></div>
+  {caption && <figcaption class="mt-2 text-sm text-gray-500 italic">{caption}</figcaption>}
+  {credit && <span class="text-xs text-gray-400">Photo: {credit}</span>}
+</figure>

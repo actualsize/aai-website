@@ -1,0 +1,49 @@
+---
+import Breadcrumb from "./Breadcrumb.astro";
+import AuthorByline from "./AuthorByline.astro";
+
+interface Props {
+  category?: string;
+  title?: string;
+  subtitle?: string;
+  date?: string;
+  author?: string;
+  readTime?: string;
+}
+const {
+  category = "technology",
+  title = "The Future of Autonomous Vehicle Safety Standards",
+  subtitle = "A comprehensive look at emerging standards and what they mean for the next generation of self-driving technology.",
+  date = "Mar 2, 2026",
+  author = "Jane Smith",
+  readTime = "8 min read",
+} = Astro.props;
+---
+<section class="page-frame">
+  <div class="flex flex-col gap-6 px-page-margin pt-8 pb-12">
+    <!-- Breadcrumb -->
+    <Breadcrumb items={[
+      { label: "Home", href: "#" },
+      { label: "Advocacy", href: "#" },
+      { label: category.charAt(0).toUpperCase() + category.slice(1), href: "#" },
+      { label: title.length > 40 ? title.slice(0, 40) + "…" : title },
+    ]} />
+
+    <!-- Category label -->
+    <span class="text-base font-extrabold uppercase">{category}</span>
+
+    <!-- Title -->
+    <h1 class="font-serif text-[56px] leading-tight font-normal max-w-[960px]">{title}</h1>
+
+    <!-- Subtitle -->
+    <p class="text-xl leading-relaxed text-gray-600 max-w-[720px]">{subtitle}</p>
+
+    <!-- Author / date / read time -->
+    <AuthorByline author={author} date={date} readTime={readTime} />
+  </div>
+
+  <!-- Hero image -->
+  <div class="px-page-margin pb-12">
+    <div class="img-placeholder w-full h-[480px]"></div>
+  </div>
+</section>

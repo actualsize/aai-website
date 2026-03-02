@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+import HeaderNav from "../components/HeaderNav.astro";
+import ArticleHero from "../components/ArticleHero.astro";
+import ArticleBody from "../components/ArticleBody.astro";
+import RelatedArticles from "../components/RelatedArticles.astro";
+import NewsletterSignup from "../components/NewsletterSignup.astro";
+import MembersCarousel from "../components/MembersCarousel.astro";
+import Footer from "../components/Footer.astro";
+---
+<BaseLayout title="Article — AAI">
+  <HeaderNav />
+  <ArticleHero />
+  <ArticleBody />
+  <RelatedArticles />
+  <NewsletterSignup />
+  <MembersCarousel />
+  <Footer />
+</BaseLayout>

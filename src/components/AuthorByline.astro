@@ -1,0 +1,21 @@
+---
+interface Props {
+  author?: string;
+  date?: string;
+  readTime?: string;
+}
+const {
+  author = "Jane Smith",
+  date = "Mar 2, 2026",
+  readTime = "8 min read",
+} = Astro.props;
+---
+<div class="flex items-center gap-3 text-sm text-gray-600">
+  <!-- Avatar placeholder -->
+  <div class="w-8 h-8 rounded-full bg-aai-img-gray shrink-0"></div>
+  <span>By <strong class="font-bold text-aai-black">{author}</strong></span>
+  <span class="text-gray-400">•</span>
+  <time>{date}</time>
+  <span class="text-gray-400">•</span>
+  <span>{readTime}</span>
+</div>

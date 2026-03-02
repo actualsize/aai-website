@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+import HeaderNav from "../components/HeaderNav.astro";
+import SectionHero from "../components/SectionHero.astro";
+import FilterBar from "../components/FilterBar.astro";
+import NewsCard from "../components/NewsCard.astro";
+import Pagination from "../components/Pagination.astro";
+import NewsletterSignup from "../components/NewsletterSignup.astro";
+import MembersCarousel from "../components/MembersCarousel.astro";
+import Footer from "../components/Footer.astro";
+
+const newsItems = [
+  { date: "Mar 2, 2026", category: "technology", title: "AAI releases framework for autonomous vehicle testing standards", excerpt: "Lorem ipsum dolor sit amet consectetur adipiscing elit seddo." },
+  { date: "Feb 28, 2026", category: "safety", title: "New crash test protocols improve occupant protection ratings", excerpt: "Lorem ipsum dolor sit amet consectetur adipiscing elit seddo." },
+  { date: "Feb 25, 2026", category: "energy", title: "EV infrastructure investment surpasses $10B milestone", excerpt: "Lorem ipsum dolor sit amet consectetur adipiscing elit seddo." },
+  { date: "Feb 20, 2026", category: "press release", title: "AAI announces annual policy summit dates and keynote speakers", excerpt: "Lorem ipsum dolor sit amet consectetur adipiscing elit seddo." },
+  { date: "Feb 18, 2026", category: "technology", title: "Connected vehicle infrastructure reaches 50-state coverage", excerpt: "Lorem ipsum dolor sit amet consectetur adipiscing elit seddo." },
+  { date: "Feb 15, 2026", category: "safety", title: "Industry collaboration yields new pedestrian detection standards", excerpt: "Lorem ipsum dolor sit amet consectetur adipiscing elit seddo." },
+];
+---
+<BaseLayout title="News & Press Releases — AAI">
+  <HeaderNav />
+  <SectionHero
+    title="News & Press Releases"
+    subtitle="LATEST UPDATES"
+    description="Stay up to date with the latest news, press releases, and policy updates from the Alliance for Automotive Innovation."
+  />
+  <FilterBar
+    active="All"
+    tags={["Press Releases", "Blog", "Reports", "Statements"]}
+  />
+
+  <div class="h-12"></div>
+
+  <!-- News grid: 2 rows × 3 columns -->
+  <section class="page-frame">
+    <div class="px-page-margin">
+      <div class="grid grid-cols-3 gap-6">
+        {newsItems.map((item) => (
+          <NewsCard
+            date={item.date}
+            category={item.category}
+            title={item.title}
+            excerpt={item.excerpt}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Pagination currentPage={1} totalPages={5} />
+  <NewsletterSignup />
+  <MembersCarousel />
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,18 @@
+---
+interface Props {
+  quote?: string;
+  attribution?: string;
+  role?: string;
+}
+const {
+  quote = "Lorem ipsum dolor sit amet consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.",
+  attribution = "Jane Smith",
+  role = "VP of Policy",
+} = Astro.props;
+---
+<blockquote class="border-t border-b border-aai-nav-bar py-8 my-8">
+  <p class="font-serif text-2xl italic leading-relaxed mb-4">"{quote}"</p>
+  <footer class="text-sm">
+    <strong class="font-bold">— {attribution}</strong>{role && <span class="text-gray-500">, {role}</span>}
+  </footer>
+</blockquote>
