@@ -31,7 +31,7 @@ const legalLinks = ["Privacy Policy", "Terms of Use", "Accessibility"];
         <div class="flex flex-col gap-3">
           <span class="text-xs font-extrabold uppercase">{col.label}</span>
           {col.links.map((link) => (
-            <a href="#" class="text-sm hover:underline hover:text-gray-600 transition-colors duration-150">{link}</a>
+            <a href="#" class="text-sm text-aai-black hover:underline hover:text-gray-600 transition-colors duration-150">{link}</a>
           ))}
         </div>
       ))}
@@ -43,7 +43,7 @@ const legalLinks = ["Privacy Policy", "Terms of Use", "Accessibility"];
     <span class="text-xs">&copy; 2026 Alliance for Automotive Innovation. All rights reserved.</span>
     <div class="flex gap-6 items-center">
       {legalLinks.map((link) => (
-        <a href="#" class="text-xs hover:underline">{link}</a>
+        <a href="#" class="text-xs text-aai-black hover:underline">{link}</a>
       ))}
     </div>
   </div>
