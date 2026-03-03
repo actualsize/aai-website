@@ -1,0 +1,65 @@
+---
+interface Props {
+  categories?: string[];
+  activeCategory?: string;
+  activeState?: string;
+  showStateFilter?: boolean;
+}
+const {
+  categories = ["All", "Industry Impact", "Tax Revenue", "Registrations", "New Purchases", "Port Activity"],
+  activeCategory = "All",
+  activeState = "",
+  showStateFilter = true
+} = Astro.props;
+---
+<section class="page-frame">
+  <div class="px-page-margin py-8">
+    <!-- Filter row -->
+    <div class="flex items-end gap-12 flex-wrap">
+      <!-- Category toggles -->
+      <div class="flex flex-col gap-2">
+        <span class="text-xs font-extrabold uppercase tracking-wider text-gray-500">Filter by View</span>
+        <div class="flex gap-2 flex-wrap">
+          {categories.map(cat => (
+            <button
+              class:list={[
+                "px-5 py-2.5 text-sm font-bold uppercase tracking-wide transition-colors duration-150",
+                cat === activeCategory
+                  ? "bg-aai-black text-white"
+                  : "bg-aai-filter-bg text-aai-black hover:bg-aai-nav-bar"
+              ]}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- State dropdown -->
+      {showStateFilter && (
+        <div class="flex flex-col gap-2">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-gray-500">Filter by State</span>
+          <div class="bg-aai-filter-bg px-5 py-2.5 text-sm font-bold uppercase tracking-wide flex items-center gap-2 min-w-[180px] justify-between">
+            <span>{activeState || "Select State"}</span>
+            <span class="text-xs">&#9660;</span>
+          </div>
+        </div>
+      )}
+    </div>
+
+    <!-- Active filter tags -->
+    <div class="flex items-center gap-3 mt-4">
+      <span class="text-xs font-extrabold uppercase tracking-wider text-gray-400">Active:</span>
+      <div class="flex gap-2 flex-wrap">
+        <span class="bg-aai-black text-white text-xs font-bold uppercase px-3 py-1.5 flex items-center gap-2">
+          {activeCategory} <span class="opacity-60 cursor-pointer">&times;</span>
+        </span>
+        {activeState && (
+          <span class="bg-aai-black text-white text-xs font-bold uppercase px-3 py-1.5 flex items-center gap-2">
+            {activeState} <span class="opacity-60 cursor-pointer">&times;</span>
+          </span>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

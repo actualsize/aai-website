@@ -1,0 +1,13 @@
+---
+interface Props {
+  source?: string;
+}
+const {
+  source = "Bureau of Economic Analysis, Bureau of Labor Statistics, IHS Markit, NHTSA, U.S. Census Bureau, 2024"
+} = Astro.props;
+---
+<section class="page-frame">
+  <div class="px-page-margin py-8">
+    <p class="text-xs text-gray-400 italic">Source: {source}</p>
+  </div>
+</section>

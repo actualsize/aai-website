@@ -1,0 +1,19 @@
+---
+interface Props {
+  heading?: string;
+  subtitle?: string;
+}
+const {
+  heading = "Every State is an Auto State",
+  subtitle = "Click a state to view its economic data"
+} = Astro.props;
+---
+<section class="page-frame">
+  <div class="px-page-margin py-16">
+    <h2 class="font-serif text-[42px] leading-tight font-normal text-center mb-10">{heading}</h2>
+    <div class="img-placeholder w-full h-[500px] flex items-center justify-center">
+      <span class="text-xl font-extrabold uppercase tracking-wider text-aai-img-gray-dk">US Map Placeholder</span>
+    </div>
+    <p class="text-sm text-gray-500 text-center mt-4">{subtitle}</p>
+  </div>
+</section>

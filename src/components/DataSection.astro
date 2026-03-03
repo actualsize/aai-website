@@ -1,0 +1,43 @@
+---
+interface Props {
+  label?: string;
+  heading?: string;
+  variant?: "default" | "light" | "dark" | "black";
+  source?: string;
+}
+const {
+  label = "",
+  heading = "",
+  variant = "default",
+  source = ""
+} = Astro.props;
+
+const bgMap: Record<string, string> = {
+  default: "bg-white",
+  light: "bg-aai-section-bg",
+  dark: "bg-aai-data-primary",
+  black: "bg-aai-black"
+};
+const textMap: Record<string, string> = {
+  default: "text-aai-black",
+  light: "text-aai-black",
+  dark: "text-white",
+  black: "text-white"
+};
+---
+<section class:list={["page-frame", bgMap[variant]]}>
+  <div class:list={["px-page-margin py-16", textMap[variant]]}>
+    {label && (
+      <span class:list={["text-xs font-extrabold uppercase tracking-wider block mb-2", variant === "default" || variant === "light" ? "text-gray-500" : "text-white/60"]}>{label}</span>
+    )}
+    {heading && (
+      <h2 class="font-serif text-[42px] leading-tight font-normal mb-10">{heading}</h2>
+    )}
+    <slot />
+    {source && (
+      <p class:list={["text-xs italic mt-8", variant === "default" || variant === "light" ? "text-gray-400" : "text-white/40"]}>
+        Source: {source}
+      </p>
+    )}
+  </div>
+</section>

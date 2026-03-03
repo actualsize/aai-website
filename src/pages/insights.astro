@@ -1,0 +1,126 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeaderNav from "../components/HeaderNav.astro";
+import InsightsHero from "../components/InsightsHero.astro";
+import MapPlaceholder from "../components/MapPlaceholder.astro";
+import DataFilterBar from "../components/DataFilterBar.astro";
+import DataSection from "../components/DataSection.astro";
+import StatCardGrid from "../components/StatCardGrid.astro";
+import DonutChart from "../components/DonutChart.astro";
+import BarChart from "../components/BarChart.astro";
+import DataAttribution from "../components/DataAttribution.astro";
+import NewsletterSignup from "../components/NewsletterSignup.astro";
+import MembersCarousel from "../components/MembersCarousel.astro";
+import Footer from "../components/Footer.astro";
+---
+<BaseLayout title="Economic Insights — AAI">
+  <HeaderNav />
+  <InsightsHero />
+  <MapPlaceholder />
+  <DataFilterBar />
+
+  <!-- Industry Impact -->
+  <DataSection variant="dark" label="Industry Impact" heading="National Economic Impact" source="Bureau of Economic Analysis, Bureau of Labor Statistics, 2024">
+    <StatCardGrid stats={[
+      { label: "Total Auto Jobs", value: "10.95M", descriptor: "Direct, indirect & induced" },
+      { label: "Job Dependency", value: "5.07%", descriptor: "Of total U.S. employment" },
+      { label: "GDP Contribution", value: "$1.49T", descriptor: "Gross domestic product" },
+      { label: "Labor Income", value: "$828.64B", descriptor: "Annual compensation" },
+      { label: "Car Sales (2024)", value: "$2.27T", descriptor: "Total vehicle sales" },
+      { label: "Vehicles Sold", value: "15.79M", descriptor: "New vehicles sold (2024)" }
+    ]} />
+  </DataSection>
+
+  <!-- Tax Revenue -->
+  <DataSection variant="light" label="Tax Revenue" heading="Federal, State & Local Tax Revenue" source="IHS Markit, 2024">
+    <StatCardGrid stats={[
+      { label: "Total Tax Revenue", value: "$273.95B", descriptor: "Auto-related tax contributions" },
+      { label: "State Tax Revenue", value: "$52.62B", descriptor: "State-level contributions" },
+      { label: "Share of Revenue", value: "7.80%", descriptor: "Of total state tax revenue" }
+    ]} />
+  </DataSection>
+
+  <!-- Registrations -->
+  <DataSection variant="default" label="Registrations" heading="283.97M Registered Vehicles">
+    <div class="grid grid-cols-2 gap-12">
+      <DonutChart
+        title="By Body Style"
+        total="283.97M"
+        totalLabel="Registered"
+        segments={[
+          { label: "Cars", pct: "32.60%" },
+          { label: "UVs", pct: "39.20%" },
+          { label: "Pickups", pct: "20.90%" },
+          { label: "Vans/Minivans", pct: "5.30%" }
+        ]}
+      />
+      <DonutChart
+        title="By Powertrain"
+        total="283.97M"
+        totalLabel="Registered"
+        segments={[
+          { label: "ICE/Hybrid", pct: "97.80%" },
+          { label: "Electric", pct: "1.40%" },
+          { label: "Plug-In Hybrid", pct: "0.70%" },
+          { label: "Fuel Cell", pct: "0.00%" }
+        ]}
+      />
+    </div>
+  </DataSection>
+
+  <!-- New Purchases -->
+  <DataSection variant="default" label="New Purchases" heading="15.79M New Vehicles Sold (2024)">
+    <div class="grid grid-cols-2 gap-12">
+      <DonutChart
+        title="By Body Style"
+        total="15.79M"
+        totalLabel="Sold"
+        segments={[
+          { label: "Cars", pct: "11.00%" },
+          { label: "UVs", pct: "62.40%" },
+          { label: "Pickups", pct: "22.50%" },
+          { label: "Vans/Minivans", pct: "4.10%" }
+        ]}
+      />
+      <DonutChart
+        title="By Powertrain"
+        total="15.79M"
+        totalLabel="Sold"
+        segments={[
+          { label: "ICE/Hybrid", pct: "90.20%" },
+          { label: "Electric", pct: "8.10%" },
+          { label: "Plug-In Hybrid", pct: "1.70%" }
+        ]}
+      />
+    </div>
+  </DataSection>
+
+  <!-- Port Activity -->
+  <DataSection variant="black" label="Activity at Ports" heading="Auto-Related Port Activity">
+    <BarChart
+      title=""
+      groups={[
+        {
+          groupLabel: "Past Decade",
+          bars: [
+            { label: "Exports", value: "$2.24T", pct: 57 },
+            { label: "Imports", value: "$3.69T", pct: 94 }
+          ]
+        },
+        {
+          groupLabel: "2024",
+          bars: [
+            { label: "Exports", value: "$244.28B", pct: 42 },
+            { label: "Imports", value: "$379.73B", pct: 65 }
+          ]
+        }
+      ]}
+      footer="Top export destinations: Canada, Mexico, Germany"
+    />
+  </DataSection>
+
+  <DataAttribution />
+  <NewsletterSignup />
+  <MembersCarousel />
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,32 @@
+---
+interface Props {
+  state?: string;
+  districts?: number;
+}
+const {
+  state = "Michigan",
+  districts = 13
+} = Astro.props;
+---
+<section class="page-frame">
+  <div class="px-page-margin py-4">
+    <div class="flex flex-col gap-2">
+      <span class="text-xs font-extrabold uppercase tracking-wider text-gray-500">Filter by Congressional District</span>
+      <div class="border border-aai-nav-bar bg-aai-filter-bg max-w-sm">
+        <!-- Header / toggle -->
+        <div class="flex items-center justify-between px-4 py-3 cursor-pointer">
+          <span class="text-sm font-bold">All Districts</span>
+          <span class="text-xs">&#9660;</span>
+        </div>
+        <!-- District list (shown collapsed as wireframe) -->
+        <div class="border-t border-aai-nav-bar">
+          {Array.from({ length: districts }, (_, i) => (
+            <div class="px-4 py-2 text-sm hover:bg-aai-nav-bar transition-colors duration-150 cursor-pointer border-b border-aai-filter-bg last:border-b-0">
+              District {i + 1}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

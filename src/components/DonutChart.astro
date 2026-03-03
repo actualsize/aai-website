@@ -1,0 +1,48 @@
+---
+interface Segment {
+  label: string;
+  pct: string;
+}
+interface Props {
+  title?: string;
+  total?: string;
+  totalLabel?: string;
+  segments?: Segment[];
+}
+const {
+  title = "Registered Vehicles by Body Style",
+  total = "283.97M",
+  totalLabel = "Registered",
+  segments = [
+    { label: "Cars", pct: "32.60%" },
+    { label: "UVs", pct: "39.20%" },
+    { label: "Pickups", pct: "20.90%" },
+    { label: "Vans/Minivans", pct: "5.30%" }
+  ]
+} = Astro.props;
+---
+<div class="flex flex-col items-center gap-6">
+  <h3 class="text-sm font-extrabold uppercase tracking-wider text-center">{title}</h3>
+
+  <!-- Donut placeholder -->
+  <div class="relative w-[200px] h-[200px]">
+    <div class="absolute inset-0 rounded-full bg-aai-img-gray-dk"></div>
+    <div class="absolute inset-[30px] rounded-full bg-white flex flex-col items-center justify-center">
+      <span class="font-serif text-2xl font-normal leading-tight">{total}</span>
+      <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-500">{totalLabel}</span>
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div class="flex flex-col gap-1.5 w-full max-w-[240px]">
+    {segments.map(seg => (
+      <div class="flex items-center justify-between text-sm">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-aai-img-gray-dk shrink-0"></span>
+          <span>{seg.label}</span>
+        </div>
+        <span class="font-bold tabular-nums">{seg.pct}</span>
+      </div>
+    ))}
+  </div>
+</div>

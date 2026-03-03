@@ -1,0 +1,31 @@
+---
+interface StatItem {
+  label: string;
+  value: string;
+  descriptor?: string;
+}
+interface Props {
+  stats?: StatItem[];
+}
+const {
+  stats = [
+    { label: "Total Auto Jobs", value: "10.95M", descriptor: "Direct, indirect & induced" },
+    { label: "Job Dependency", value: "5.07%", descriptor: "Of total state employment" },
+    { label: "GDP Contribution", value: "$1.49T", descriptor: "Gross domestic product" },
+    { label: "Labor Income", value: "$828.64B", descriptor: "Annual compensation" },
+    { label: "Car Sales", value: "$2.27T", descriptor: "Total vehicle sales (2024)" },
+    { label: "Vehicles Sold", value: "15.79M", descriptor: "New vehicles sold (2024)" }
+  ]
+} = Astro.props;
+---
+<div class="grid grid-cols-3 gap-4">
+  {stats.map(stat => (
+    <div class="bg-aai-black p-8 flex flex-col gap-3">
+      <span class="text-xs font-extrabold uppercase tracking-wider text-white/60">{stat.label}</span>
+      <span class="font-serif text-[48px] leading-none text-white">{stat.value}</span>
+      {stat.descriptor && (
+        <span class="text-sm text-white/50">{stat.descriptor}</span>
+      )}
+    </div>
+  ))}
+</div>

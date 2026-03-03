@@ -1,0 +1,144 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeaderNav from "../../components/HeaderNav.astro";
+import InsightsHero from "../../components/InsightsHero.astro";
+import DataFilterBar from "../../components/DataFilterBar.astro";
+import DistrictSelector from "../../components/DistrictSelector.astro";
+import SaveAsPdf from "../../components/SaveAsPdf.astro";
+import DataSection from "../../components/DataSection.astro";
+import StatCardGrid from "../../components/StatCardGrid.astro";
+import DonutChart from "../../components/DonutChart.astro";
+import BarChart from "../../components/BarChart.astro";
+import DataAttribution from "../../components/DataAttribution.astro";
+import NewsletterSignup from "../../components/NewsletterSignup.astro";
+import MembersCarousel from "../../components/MembersCarousel.astro";
+import Footer from "../../components/Footer.astro";
+---
+<BaseLayout title="Michigan Economic Insights — AAI">
+  <HeaderNav />
+  <InsightsHero
+    label="State Economic Insights"
+    title="Michigan"
+    description="View the automotive industry's impact in Michigan at state and congressional district levels."
+  />
+
+  <!-- Filters + controls -->
+  <div class="page-frame px-page-margin py-6 flex items-start justify-between gap-8 flex-wrap">
+    <div class="flex-1">
+      <DataFilterBar
+        categories={["All", "Industry Impact", "Tax Revenue", "Registrations", "New Purchases", "Port Activity"]}
+        activeCategory="All"
+        activeState="Michigan"
+        showStateFilter={false}
+      />
+    </div>
+    <SaveAsPdf />
+  </div>
+
+  <DistrictSelector state="Michigan" districts={13} />
+
+  <!-- Industry Impact -->
+  <DataSection variant="dark" label="Industry Impact" heading="Michigan Economic Impact" source="Bureau of Economic Analysis, Bureau of Labor Statistics, 2024">
+    <StatCardGrid stats={[
+      { label: "Total Auto Jobs", value: "447.5K", descriptor: "Direct, indirect & induced" },
+      { label: "Job Dependency", value: "7.52%", descriptor: "Of total state employment" },
+      { label: "Gross State Product", value: "$69.39B", descriptor: "Automotive GDP contribution" },
+      { label: "Share of State GDP", value: "10.50%", descriptor: "Of total Michigan GDP" },
+      { label: "Labor Income", value: "$35.01B", descriptor: "Annual compensation" },
+      { label: "Car Sales (2024)", value: "$23.88B", descriptor: "Total vehicle sales" }
+    ]} />
+  </DataSection>
+
+  <!-- Tax Revenue -->
+  <DataSection variant="light" label="Tax Revenue" heading="Michigan Tax Revenue" source="IHS Markit, 2024">
+    <StatCardGrid stats={[
+      { label: "State Tax Revenue", value: "$4.04B", descriptor: "Auto-related tax contributions" },
+      { label: "Share of Revenue", value: "10.60%", descriptor: "Of total state tax revenue" },
+      { label: "Vehicles Sold", value: "546.3K", descriptor: "New vehicles sold (2024)" }
+    ]} />
+  </DataSection>
+
+  <!-- Registrations -->
+  <DataSection variant="default" label="Registrations" heading="8.58M Registered Vehicles">
+    <div class="grid grid-cols-2 gap-12">
+      <DonutChart
+        title="By Body Style"
+        total="8.58M"
+        totalLabel="Registered"
+        segments={[
+          { label: "Cars", pct: "25.60%" },
+          { label: "UVs", pct: "45.90%" },
+          { label: "Pickups", pct: "21.20%" },
+          { label: "Vans/Minivans", pct: "6.00%" }
+        ]}
+      />
+      <DonutChart
+        title="By Powertrain"
+        total="8.58M"
+        totalLabel="Registered"
+        segments={[
+          { label: "ICE/Hybrid", pct: "98.70%" },
+          { label: "Electric", pct: "0.90%" },
+          { label: "Plug-In Hybrid", pct: "0.40%" },
+          { label: "Fuel Cell", pct: "0.00%" }
+        ]}
+      />
+    </div>
+  </DataSection>
+
+  <!-- New Purchases -->
+  <DataSection variant="default" label="New Purchases" heading="546.3K New Vehicles Sold (2024)">
+    <div class="grid grid-cols-2 gap-12">
+      <DonutChart
+        title="By Body Style"
+        total="546.3K"
+        totalLabel="Sold"
+        segments={[
+          { label: "Cars", pct: "7.20%" },
+          { label: "UVs", pct: "67.70%" },
+          { label: "Pickups", pct: "22.10%" },
+          { label: "Vans/Minivans", pct: "3.10%" }
+        ]}
+      />
+      <DonutChart
+        title="By Powertrain"
+        total="546.3K"
+        totalLabel="Sold"
+        segments={[
+          { label: "ICE/Hybrid", pct: "93.40%" },
+          { label: "Electric", pct: "5.40%" },
+          { label: "Plug-In Hybrid", pct: "1.30%" }
+        ]}
+      />
+    </div>
+  </DataSection>
+
+  <!-- Port Activity -->
+  <DataSection variant="black" label="Activity at Ports" heading="Michigan Port Activity">
+    <BarChart
+      title=""
+      groups={[
+        {
+          groupLabel: "Past Decade",
+          bars: [
+            { label: "Exports", value: "$224.48B", pct: 57 },
+            { label: "Imports", value: "$391.43B", pct: 100 }
+          ]
+        },
+        {
+          groupLabel: "2024",
+          bars: [
+            { label: "Exports", value: "$23.07B", pct: 42 },
+            { label: "Imports", value: "$35.39B", pct: 65 }
+          ]
+        }
+      ]}
+      footer="Top export destinations: Canada, Germany, Italy"
+    />
+  </DataSection>
+
+  <DataAttribution />
+  <NewsletterSignup />
+  <MembersCarousel />
+  <Footer />
+</BaseLayout>

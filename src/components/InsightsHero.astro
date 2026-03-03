@@ -1,0 +1,19 @@
+---
+interface Props {
+  label?: string;
+  title?: string;
+  description?: string;
+}
+const {
+  label = "Economic Insights",
+  title = "Economic\nInsights",
+  description = "View the automotive industry's impact at national, state, and congressional district levels."
+} = Astro.props;
+---
+<section class="page-frame bg-aai-data-hero">
+  <div class="px-page-margin py-20">
+    <span class="text-sm font-extrabold uppercase tracking-wider text-white">{label}</span>
+    <h1 class="font-serif text-[64px] leading-tight font-normal text-white mt-4 whitespace-pre-line">{title}</h1>
+    <p class="text-lg text-white/80 mt-6 max-w-xl">{description}</p>
+  </div>
+</section>

@@ -1,0 +1,55 @@
+---
+interface BarGroup {
+  groupLabel?: string;
+  bars: { label: string; value: string; pct: number }[];
+}
+interface Props {
+  title?: string;
+  groups?: BarGroup[];
+  footer?: string;
+}
+const {
+  title = "Auto-Related Port Activity",
+  groups = [
+    {
+      groupLabel: "Past Decade",
+      bars: [
+        { label: "Exports", value: "$2.24T", pct: 57 },
+        { label: "Imports", value: "$3.69T", pct: 94 }
+      ]
+    },
+    {
+      groupLabel: "2024",
+      bars: [
+        { label: "Exports", value: "$244.28B", pct: 42 },
+        { label: "Imports", value: "$379.73B", pct: 65 }
+      ]
+    }
+  ],
+  footer = "Top export destinations: Canada, Mexico, Germany"
+} = Astro.props;
+---
+<div class="flex flex-col gap-8">
+  <h3 class="text-sm font-extrabold uppercase tracking-wider">{title}</h3>
+
+  {groups.map(group => (
+    <div class="flex flex-col gap-3">
+      {group.groupLabel && (
+        <span class="text-xs font-bold uppercase tracking-wider text-inherit opacity-60">{group.groupLabel}</span>
+      )}
+      {group.bars.map(bar => (
+        <div class="flex items-center gap-4">
+          <span class="text-sm w-16 shrink-0 text-right">{bar.label}</span>
+          <div class="flex-1 h-8 bg-aai-filter-bg overflow-hidden">
+            <div class="h-full bg-aai-img-gray-dk" style={`width: ${bar.pct}%`}></div>
+          </div>
+          <span class="text-sm font-bold tabular-nums w-24 shrink-0">{bar.value}</span>
+        </div>
+      ))}
+    </div>
+  ))}
+
+  {footer && (
+    <p class="text-sm opacity-60">{footer}</p>
+  )}
+</div>
