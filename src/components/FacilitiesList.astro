@@ -1,0 +1,51 @@
+---
+interface Facility {
+  name: string;
+  city: string;
+  type: string;
+  employees: string;
+}
+interface Props {
+  facilities?: Facility[];
+  source?: string;
+}
+const {
+  facilities = [],
+  source = "Alliance for Automotive Innovation, 2024"
+} = Astro.props;
+
+const hasRecords = facilities.length > 0;
+---
+<section class="page-frame bg-white">
+  <div class="px-page-margin py-16">
+    <span class="text-xs font-extrabold uppercase tracking-wider text-gray-500 block mb-2">Facilities</span>
+    <h2 class="font-serif text-[42px] leading-tight font-normal mb-8">Auto Manufacturing &amp; Assembly Facilities</h2>
+
+    {hasRecords ? (
+      <div class="w-full">
+        <!-- Header row -->
+        <div class="grid grid-cols-[2fr_1fr_1fr_1fr] bg-aai-section-bg">
+          <div class="px-3 py-2.5 text-xs font-extrabold uppercase tracking-wider text-gray-500">Facility Name</div>
+          <div class="px-3 py-2.5 text-xs font-extrabold uppercase tracking-wider text-gray-500">City / County</div>
+          <div class="px-3 py-2.5 text-xs font-extrabold uppercase tracking-wider text-gray-500">Type</div>
+          <div class="px-3 py-2.5 text-xs font-extrabold uppercase tracking-wider text-gray-500">Employees</div>
+        </div>
+        <!-- Data rows -->
+        {facilities.map((f, i) => (
+          <div class:list={["grid grid-cols-[2fr_1fr_1fr_1fr] border border-aai-filter-bg border-t-0", i % 2 === 0 ? "bg-white" : "bg-aai-section-bg"]}>
+            <div class="px-3 py-2.5 text-sm">{f.name}</div>
+            <div class="px-3 py-2.5 text-sm">{f.city}</div>
+            <div class="px-3 py-2.5 text-sm">{f.type}</div>
+            <div class="px-3 py-2.5 text-sm">{f.employees}</div>
+          </div>
+        ))}
+        <p class="text-xs italic text-gray-400 mt-4">Source: {source}</p>
+      </div>
+    ) : (
+      <div class="bg-aai-section-bg flex flex-col items-center justify-center gap-3 py-12 px-8 text-center">
+        <p class="text-lg text-gray-400">No facility data available for this state.</p>
+        <p class="text-sm text-gray-400">Facility records are not yet available. Check back for updates.</p>
+      </div>
+    )}
+  </div>
+</section>

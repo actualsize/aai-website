@@ -1,0 +1,51 @@
+---
+interface FuelStation {
+  type: string;
+  count: string;
+  unit: string;
+}
+interface Props {
+  stations?: FuelStation[];
+  source?: string;
+}
+const {
+  stations = [],
+  source = "U.S. Department of Energy, Alternative Fuels Station Locator, 2024"
+} = Astro.props;
+
+const hasRecords = stations.length > 0;
+
+// Split into rows of 3 for the card grid
+const rows: FuelStation[][] = [];
+for (let i = 0; i < stations.length; i += 3) {
+  rows.push(stations.slice(i, i + 3));
+}
+---
+<section class="page-frame bg-aai-data-primary">
+  <div class="px-page-margin py-16">
+    <span class="text-xs font-extrabold uppercase tracking-wider text-white/60 block mb-2">Alternative Fueling</span>
+    <h2 class="font-serif text-[42px] leading-tight font-normal text-white mb-8">Alternative Fueling Infrastructure</h2>
+
+    {hasRecords ? (
+      <div class="flex flex-col gap-4">
+        {rows.map(row => (
+          <div class="grid gap-4" style={`grid-template-columns: repeat(${row.length}, 1fr)`}>
+            {row.map(s => (
+              <div class="bg-black p-6 flex flex-col gap-2">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-white/60">{s.type}</span>
+                <span class="font-serif text-[48px] leading-none text-white">{s.count}</span>
+                <span class="text-sm text-white/50">{s.unit}</span>
+              </div>
+            ))}
+          </div>
+        ))}
+        <p class="text-xs italic text-white/40 mt-2">Source: {source}</p>
+      </div>
+    ) : (
+      <div class="bg-black flex flex-col items-center justify-center gap-3 py-12 px-8 text-center">
+        <p class="text-lg text-white/60">No alternative fueling data available for this state.</p>
+        <p class="text-sm text-white/40">Fueling station records are not yet available. Check back for updates.</p>
+      </div>
+    )}
+  </div>
+</section>

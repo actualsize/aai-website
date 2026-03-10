@@ -9,6 +9,8 @@ import DataSection from "../components/DataSection.astro";
 import StatCardGrid from "../components/StatCardGrid.astro";
 import DonutChart from "../components/DonutChart.astro";
 import BarChart from "../components/BarChart.astro";
+import FacilitiesList from "../components/FacilitiesList.astro";
+import FuelingRecords from "../components/FuelingRecords.astro";
 import DataAttribution from "../components/DataAttribution.astro";
 import NewsletterSignup from "../components/NewsletterSignup.astro";
 import MembersCarousel from "../components/MembersCarousel.astro";
@@ -119,6 +121,12 @@ import Footer from "../components/Footer.astro";
       footer="Top export destinations: Canada, Mexico, Germany"
     />
   </DataSection>
+
+  <!-- Facilities — no state selected, show empty state -->
+  <FacilitiesList />
+
+  <!-- Alternative Fueling — no state selected, show empty state -->
+  <FuelingRecords />
 
   <DataAttribution />
   <NewsletterSignup />

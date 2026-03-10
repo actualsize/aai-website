@@ -10,6 +10,8 @@ import DataSection from "../../components/DataSection.astro";
 import StatCardGrid from "../../components/StatCardGrid.astro";
 import DonutChart from "../../components/DonutChart.astro";
 import BarChart from "../../components/BarChart.astro";
+import FacilitiesList from "../../components/FacilitiesList.astro";
+import FuelingRecords from "../../components/FuelingRecords.astro";
 import DataAttribution from "../../components/DataAttribution.astro";
 import NewsletterSignup from "../../components/NewsletterSignup.astro";
 import MembersCarousel from "../../components/MembersCarousel.astro";
@@ -27,7 +29,7 @@ import Footer from "../../components/Footer.astro";
   <div class="page-frame px-page-margin py-6 flex items-start justify-between gap-8 flex-wrap">
     <div class="flex-1">
       <DataFilterBar
-        categories={["All", "Industry Impact", "Tax Revenue", "Registrations", "New Purchases", "Port Activity"]}
+        categories={["All", "Industry Impact", "Tax Revenue", "Registrations", "New Purchases", "Port Activity", "Facilities", "Alternative Fueling"]}
         activeCategory="All"
         activeState="Michigan"
         showStateFilter={false}
@@ -137,6 +139,32 @@ import Footer from "../../components/Footer.astro";
       footer="Top export destinations: Canada, Germany, Italy"
     />
   </DataSection>
+
+  <!-- Facilities -->
+  <FacilitiesList
+    facilities={[
+      { name: "Ford Dearborn Truck Plant",   city: "Dearborn",     type: "Assembly",   employees: "4,300" },
+      { name: "GM Flint Assembly",           city: "Flint",        type: "Assembly",   employees: "3,200" },
+      { name: "Stellantis Sterling Heights", city: "Sterling Hts", type: "Assembly",   employees: "5,100" },
+      { name: "Ford Michigan Assembly",      city: "Wayne",        type: "Assembly",   employees: "2,900" },
+      { name: "GM Grand River Assembly",     city: "Lansing",      type: "Assembly",   employees: "2,600" },
+      { name: "Stellantis Warren Truck",     city: "Warren",       type: "Assembly",   employees: "6,400" },
+      { name: "BorgWarner Transmission",     city: "Auburn Hills", type: "Components", employees: "1,800" },
+      { name: "American Axle – Detroit",     city: "Detroit",      type: "Drivetrain", employees: "2,200" },
+    ]}
+  />
+
+  <!-- Alternative Fueling Infrastructure -->
+  <FuelingRecords
+    stations={[
+      { type: "Electric (EV)",    count: "3,412", unit: "charging ports" },
+      { type: "CNG",              count: "89",    unit: "stations"       },
+      { type: "LPG / Propane",    count: "142",   unit: "stations"       },
+      { type: "Hydrogen",         count: "3",     unit: "stations"       },
+      { type: "Ethanol (E85)",    count: "614",   unit: "stations"       },
+      { type: "Biodiesel (B20+)", count: "37",    unit: "stations"       },
+    ]}
+  />
 
   <DataAttribution />
   <NewsletterSignup />
